@@ -66,6 +66,10 @@ class ColorVector
 		ColorGFX r = (red() / 255.0) * 31;
 		ColorGFX g = (green() / 255.0) * 63;
 		ColorGFX b = (blue() / 255.0) * 31;
+#ifdef MONOCHROME
+		if (r || g || b) return 1;
+		return 0
+#endif
 		return static_cast<ColorGFX>((r << 11) | (g << 5) | (b));
 	}
 
